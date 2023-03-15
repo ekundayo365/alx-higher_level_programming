@@ -1,6 +1,8 @@
 #!/usr/bin/node
-const dict = require('./101-data').dict;
-console.log(Object.entries(dict).reduce(function (i, idx) {
-  i[idx[1]] = (i[idx[1]] || []).concat(idx[0]);
-  return i;
-}, {}));
+const dic = require('./101-data.js').dict;
+const newDic = {};
+for (const key in dic) {
+  if (newDic[dic[key]]) newDic[dic[key]].push(key);
+  else newDic[dic[key]] = [key];
+}
+console.log(newDic);
